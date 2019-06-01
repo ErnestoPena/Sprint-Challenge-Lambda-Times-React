@@ -1,8 +1,7 @@
 import React from 'react';
-import './tabs.css'
+import PropTypes from 'prop-types'
 
 const Tab = props => {
-  
       var myclassname ='';
       myclassname = props.tab === props.selectedTab ? 'tab active-tab': 'tab'
       
@@ -15,6 +14,10 @@ const Tab = props => {
   );
 };
 
-// Make sure you include PropTypes on your props.
+Tab.propTypes = {
+  tap: PropTypes.string
+}
 
 export default Tab;
+
+

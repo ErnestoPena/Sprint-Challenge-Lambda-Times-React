@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-
 import Tabs from './Tabs';
 import Cards from './Cards';
 
@@ -22,7 +21,6 @@ export default class Content extends Component {
     })  
   };
 
-    
   filterCards = () => {
     
     var mycards = cardData
@@ -40,7 +38,6 @@ export default class Content extends Component {
   render() {
     return (
       <div className="content-container">
-      
         <Tabs tabs={this.state.tabs} changeSelected={this.changeSelected} selectedTab={this.state.selected}/>
         <Cards cards={this.filterCards()} />
       </div>
