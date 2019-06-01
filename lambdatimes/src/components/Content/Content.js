@@ -16,21 +16,20 @@ export default class Content extends Component {
     };
   }
  
-
   changeSelected = (e,tab) => {
     console.log(tab)
     this.setState({
       selected: tab
     })  
+    console.log('my change state',this.state.selected)
   };
 
   
-
   filterCards = () => {
     
       this.setState(prevState => {
         const myfilteredcards = prevState.cards.filter(filtercards => {
-          return filtercards.tab === this.state.selected;
+          return filtercards.tab == this.state.selected;
         })
       })
 
