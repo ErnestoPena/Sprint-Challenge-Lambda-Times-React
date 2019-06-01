@@ -21,47 +21,29 @@ export default class Content extends Component {
     this.setState({
       selected: tab
     })  
-    console.log('my change state',this.state.selected)
   };
 
   
   filterCards = () => {
-    
-      this.setState(prevState => {
-        const myfilteredcards = prevState.cards.filter(filtercards => {
-          return filtercards.tab == this.state.selected;
-        })
+     let myfilteredcards = this.state.cards
+      myfilteredcards = myfilteredcards.filter((filtercards) => {
+      filtercards.tab === this.state.selected;
       })
 
-      
-
-    /* Right now this function only returns the cards on state.
-      We're going to make this function more dynamic
-      by using it to filter out our cards for when a tab is selcted
-      
-      Notice that we're passing this function to our <Cards /> component below.
-      This function returns an array of cards, so we can just pass it down as such.
-
-      Your algorithim for the logic here is as follows: 
-        - if the selected tab is 'all' it should return all 
-          of the items from cardData. 
-        - else, it should only return those cards whose 'tab' matched this.state.selected.
-    */
+      this.setState({
+        cards: myfilteredcards
+        })
+        console.log(myfilteredcards)
     return this.state.cards;
   };
 
   render() {
     return (
       <div className="content-container">
-        {/* 
-          Add 2 props to the Tabs component, 
-          `selectedTab` that includes the currently selected tab
-          and `selectTabHandler` that includes the function to change the selected tab
-        */}
       
         <Tabs tabs={this.state.tabs} changeSelected={this.changeSelected} selectedTab={this.state.selected}/>
         
-        <Cards cards={this.filterCards()} />
+        <Cards cards={this.state.cards} />
       </div>
     );
   }
