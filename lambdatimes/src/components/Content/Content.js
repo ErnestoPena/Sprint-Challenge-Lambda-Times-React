@@ -21,19 +21,21 @@ export default class Content extends Component {
     this.setState({
       selected: tab
     })  
+    this.filterCards(tab)
   };
 
   
-  filterCards = () => {
+  filterCards = (tab) => {
      let myfilteredcards = this.state.cards
       myfilteredcards = myfilteredcards.filter((filtercards) => {
-      filtercards.tab === this.state.selected;
+       return filtercards.tab === tab;
       })
 
       this.setState({
         cards: myfilteredcards
         })
-        console.log(myfilteredcards)
+
+        console.log(this.state.cards)
     return this.state.cards;
   };
 
