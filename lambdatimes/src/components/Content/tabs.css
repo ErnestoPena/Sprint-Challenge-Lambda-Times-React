@@ -1,0 +1,11 @@
+.tab_class {
+    color: white;
+    margin: 4px 10px;
+    font-size: 12px;
+    background-color: #333333;
+    padding: 1px 7px;
+}
+
+.tab_class:hover {
+    cursor: pointer;
+}
