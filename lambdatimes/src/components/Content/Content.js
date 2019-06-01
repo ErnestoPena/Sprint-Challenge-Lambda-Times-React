@@ -17,26 +17,24 @@ export default class Content extends Component {
   }
  
   changeSelected = (e,tab) => {
-    console.log(tab)
     this.setState({
       selected: tab
     })  
-    this.filterCards(tab)
   };
 
-  
-  filterCards = (tab) => {
-     let myfilteredcards = this.state.cards
-      myfilteredcards = myfilteredcards.filter((filtercards) => {
-       return filtercards.tab === tab;
+    
+  filterCards = () => {
+    
+    var mycards = cardData
+    var myselectedtab = this.state.selected
+    if (myselectedtab === 'all') {
+        return mycards;  
+    } else {
+        const mycardsresults = mycards.filter(filtercards => {
+          return filtercards.tab === myselectedtab;
       })
-
-      this.setState({
-        cards: myfilteredcards
-        })
-
-        console.log(this.state.cards)
-    return this.state.cards;
+     return mycardsresults;
+    }  
   };
 
   render() {
@@ -44,8 +42,7 @@ export default class Content extends Component {
       <div className="content-container">
       
         <Tabs tabs={this.state.tabs} changeSelected={this.changeSelected} selectedTab={this.state.selected}/>
-        
-        <Cards cards={this.state.cards} />
+        <Cards cards={this.filterCards()} />
       </div>
     );
   }
